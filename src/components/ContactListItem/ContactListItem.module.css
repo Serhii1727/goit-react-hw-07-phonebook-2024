@@ -7,7 +7,13 @@
   margin-bottom: 10px;
 }
 
+.buttonContainer {
+  display: flex;
+  align-items: center;
+}
+
 .button__delete {
+  height: 20px;
   border-radius: 5px;
   cursor: pointer;
   border: none;

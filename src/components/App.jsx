@@ -6,13 +6,14 @@ import Filter from './Filter';
 import ContactList from './ContactList';
 import Title from './Title';
 import css from './App.module.css';
-import { getError, getLoading } from '../redux/selectors';
+import { selectError, selectLoading } from '../redux/selectors';
 import Loader from './Loader';
+import Error from './Error';
 
 export function App() {
   const dispatch = useDispatch();
-  const isLoading = useSelector(getLoading);
-  const error = useSelector(getError);
+  const isLoading = useSelector(selectLoading);
+  const error = useSelector(selectError);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -25,8 +26,7 @@ export function App() {
       <Title title="Contacts" />
       <Filter />
       {isLoading && <Loader />}
-      {error && <p className={css.error}>{error}</p>}
-      <ContactList />
+      {error ? <Error /> : <ContactList />}
     </div>
   );
 }
